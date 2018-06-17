@@ -1,5 +1,6 @@
 import os
 from funcy import distinct, remove
+import datetime
 
 from .helpers import parse_db_url, fix_assets_path, array_from_string, parse_boolean, int_or_none, set_from_string
 
@@ -222,3 +223,7 @@ SCHEMA_RUN_TABLE_SIZE_CALCULATIONS = parse_boolean(os.environ.get("REDASH_SCHEMA
 # Allow Parameters in Embeds
 # WARNING: With this option enabled, Redash reads query parameters from the request URL (risk of SQL injection!)
 ALLOW_PARAMETERS_IN_EMBEDS = parse_boolean(os.environ.get("REDASH_ALLOW_PARAMETERS_IN_EMBEDS", "false"))
+
+REMEMBER_COOKIE_DURATION = datetime.timedelta(seconds=int(os.environ.get("REMEMBER_COOKIE_DURATION", "86400")))
+PERMANENT_SESSION_LIFETIME = datetime.timedelta(seconds=int(os.environ.get("PERMANENT_SESSION_LIFETIME", "86400")))
+
