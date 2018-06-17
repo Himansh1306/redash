@@ -4,6 +4,7 @@ import 'brace/mode/sql';
 import 'brace/mode/json';
 import 'brace/ext/language_tools';
 import { map } from 'underscore';
+import 'brace/theme/merbivore_soft';
 
 // By default Ace will try to load snippet files for the different modes and fail.
 // We don't need them, so we use these placeholders until we define our own.
@@ -54,6 +55,7 @@ function queryEditor(QuerySnippet, $timeout) {
             // Release Cmd/Ctrl+L to the browser
             editor.commands.bindKey('Cmd+L', null);
             editor.commands.bindKey('Ctrl+L', null);
+            editor.setTheme('ace/theme/merbivore_soft');
 
             QuerySnippet.query((snippets) => {
               window.ace.acequire(['ace/snippets'], (snippetsModule) => {

@@ -132,10 +132,12 @@ def create_app(load_admin=True):
     migrate.init_app(app, db)
     if load_admin:
         init_admin(app)
+    
     mail.init_app(app)
     setup_authentication(app)
     limiter.init_app(app)
     handlers.init_app(app)
     configure_webpack(app)
     extensions.init_extensions(app)
+
     return app
